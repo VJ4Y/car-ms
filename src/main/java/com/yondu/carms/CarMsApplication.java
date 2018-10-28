@@ -7,6 +7,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import com.yondu.carms.domain.Car;
 import com.yondu.carms.domain.Owner;
@@ -27,6 +30,15 @@ public class CarMsApplication {
 		
 	}
 	
+//	@Bean
+//	public WebMvcConfigurer corsConfigurer(){
+//		return new WebMvcConfigurerAdapter(){
+//			public void addCorsMapping(CorsRegistry registry){
+//				registry.addMapping("/**");
+//				}
+//			};
+//	}
+	
 	@Bean
 	CommandLineRunner runner(){
 		return args->{
@@ -36,4 +48,5 @@ public class CarMsApplication {
 			carRepository.save(new Car("BMW", "black", "Z4", 10, "ABC123", 2018, o1));
 			};
 	}
+	
 }

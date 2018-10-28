@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Car {
@@ -21,7 +21,8 @@ public class Car {
 	private int price;
 	private String reg_number;
 	private int year;
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
+	@JsonIgnoreProperties(value={"handler","hibernateLazyInitializer"})
 	@JoinColumn(name="owner")
 	private Owner owner;
 	
@@ -107,7 +108,7 @@ public class Car {
 	@Override
 	public String toString() {
 			
-		return ""+getId()+""+getModel()+getBrand()+getColor()+getPrice()+getReg_number()+getYear()+"*************";
+		return ""+getId()+" "+getModel()+" "+getBrand()+" "+getColor()+" "+getPrice()+" "+getReg_number()+" "+getYear()+"*************";
 	}
 	
 }

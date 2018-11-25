@@ -13,8 +13,10 @@ import org.springframework.context.annotation.Bean;
 
 import com.yondu.carms.domain.Car;
 import com.yondu.carms.domain.Owner;
+import com.yondu.carms.domain.User;
 import com.yondu.carms.repository.CarRepository;
 import com.yondu.carms.repository.OwnerRepository;
+import com.yondu.carms.repository.UserRepository;
 
 @SpringBootApplication
 public class CarMsApplication {
@@ -22,6 +24,9 @@ public class CarMsApplication {
 	CarRepository carRepository;
 	@Autowired
 	OwnerRepository ownerRepository; 
+	@Autowired	
+	private UserRepository urepository;
+	
 	static Logger logger=LoggerFactory.getLogger(CarMsApplication.class);
 	public static void main(String[] args) {
 		//lets check if app is restarting and and 
@@ -46,7 +51,11 @@ public class CarMsApplication {
 			Owner o1=new Owner("Bat", "Man");
 			ownerRepository.save(o1);
 			carRepository.save(new Car("BMW", "black", "Z4", 10, "ABC123", 2018, o1));
+			
+			urepository.save(new User("user", "$2a$04$1.YhMIgNX/8TkCKGFUONWO1waedKhQ5KrnB30fl0Q01QKqmzLf.Zi", "USER"));
+			urepository.save(new User("admin", "$2a$04$KNLUwOWHVQZVpXyMBNc7JOzbLiBjb9Tk9bP7KNcPI12ICuvzXQQKG", "ADMIN"));
 			};
+			
 	}
 	
 }

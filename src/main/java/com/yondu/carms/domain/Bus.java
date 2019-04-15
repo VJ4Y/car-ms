@@ -1,7 +1,10 @@
 package com.yondu.carms.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 
 @Entity
@@ -12,8 +15,15 @@ public class Bus {
 	private String busName;
 	private String busType;
 	
+	@ManyToOne(cascade= CascadeType.ALL)
+	@JoinColumn(name="source_station")
+	private Station sourceStation;
+
+	@ManyToOne(cascade= CascadeType.ALL)
+	@JoinColumn(name="destination_station")
+	private Station destinationStation;
 	
-	
+		
 	public Bus() {
 	}
 	
@@ -35,4 +45,17 @@ public class Bus {
 	public String getBusType() {
 		return busType;
 	}
+
+	public Station getSourceStation() {
+		return sourceStation;
+	}
+
+	public void setSourceStation(Station sourceStation) {
+		this.sourceStation = sourceStation;
+	}
+
+	public Station getDestinationStation() {
+		return destinationStation;
+	}
+
 }

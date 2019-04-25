@@ -15,11 +15,11 @@ public class Station {
 //	private double station_latitude;
 //	private double station_longitude;
 
-	public int getStationId() {
+	public String getStationId() {
 		return stationId;
 	}
 
-	public void setStationId(int station_id) {
+	public void setStationId(String station_id) {
 		this.stationId = station_id;
 	}
 

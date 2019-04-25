@@ -6,7 +6,7 @@ import javax.persistence.Id;
 @Entity
 public class Station {
 	@Id
-	private int stationId;
+	private String stationId;
 	private String stationName;
 	private String subStation;
 	
